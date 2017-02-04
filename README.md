@@ -1,4 +1,4 @@
-This objective of this project is to create a binary tree data structure and a function to locate data inside of it
+The objective of this project is to create a binary tree data structure and a function to locate data inside of it
 
 Tasks from theodinproject:
 
