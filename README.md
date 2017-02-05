@@ -2,6 +2,8 @@ The objective of this project is to create a binary tree data structure and a fu
 
 Tasks from theodinproject:
 
+PART 1
+
 1. Build a class Node. It should have a value that it stores and also links to its parent and children (if they exist). Build getters and setters for it (e.g. parent node, child node(s)).
 
 2. Write a method build_tree which takes an array of data (e.g. [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]) and turns it into a binary tree full of Node objects appropriately placed. Start by assuming the array you get is sorted.
@@ -20,4 +22,22 @@ Tips:
 
 You can think of the dfs_rec method as a little robot that crawls down the tree, checking if a node is the correct node and spawning other little robots to keep searching the tree. No robot is allowed to turn on, though, until all the robots to its left have finished their task.
 The method will need to take in both the target value and the current node to compare against.
+
+PART 2
+
+Your task is to build a function knight_moves that shows the simplest possible way to get from one square to another by outputting all squares the knight will stop on along the way.
+
+You can think of the board as having 2-dimensional coordinates. Your function would therefore look like:
+
+knight_moves([0,0],[1,2]) == [[0,0],[1,2]]
+knight_moves([0,0],[3,3]) == [[0,0],[1,2],[3,3]]
+knight_moves([3,3],[0,0]) == [[3,3],[1,2],[0,0]]
+
+1. Put together a script that creates a game board and a knight.
+
+2. Treat all possible moves the knight could make as children in a tree. Don't allow any moves to go off the board.
+
+3. Decide which search algorithm is best to use for this case. Hint: one of them could be a potentially infinite series.
+
+4. Use the chosen search algorithm to find the shortest path between the starting square (or node) and the ending square. Output what that full path looks like, e.g.:
 
