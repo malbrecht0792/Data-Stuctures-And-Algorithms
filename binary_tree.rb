@@ -70,6 +70,21 @@ class Tree
 	def set_right_child(parent, value)
 		parent.right_child = Node.new(value, parent)
 	end
+
+	def breadth_first_search(target_value)
+		queue = []
+		queue.push(@root)
+		while queue.any?
+			current_node = queue[0]
+			if current_node.nil?
+				queue.shift
+				next
+			end
+			queue.push(current_node.left_child, current_node.right_child)
+			return current_node if current_node.value == target_value
+			queue.shift
+		end
+	end
 end
 
 my_tree = Tree.new([8,3,10,13,1,7,4,14])
@@ -82,6 +97,10 @@ puts "Root.left_child.right_child.left_child: #{my_tree.root.left_child.right_ch
 puts "Root.right_child: #{my_tree.root.right_child.value}"
 puts "Root.right_child.right_child: #{my_tree.root.right_child.right_child.value}"
 puts "Root.right_child.right_child.right_child: #{my_tree.root.right_child.right_child.right_child.value}"
+
+puts my_tree.breadth_first_search(4).value
+
+
 
 
 
