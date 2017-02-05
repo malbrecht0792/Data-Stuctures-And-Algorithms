@@ -85,6 +85,29 @@ class Tree
 			queue.shift
 		end
 	end
+
+	def depth_first_search(target_value)
+		stack = []
+		stack.push(@root)
+		while stack.any?
+			current_node = stack[-1]
+			if current_node.nil?
+				stack.pop
+				next
+			end
+			return current_node if current_node.value == target_value
+			stack.pop
+			stack.push(current_node.right_child, current_node.left_child)
+		end
+	end
+
+	def dfs_rec(target_value, node=@root)
+		return if node.nil? || @return_value
+		@return_value = node if node.value == target_value
+		dfs_rec(target_value, node.left_child)
+		dfs_rec(target_value, node.right_child)
+		return @return_value
+	end
 end
 
 my_tree = Tree.new([8,3,10,13,1,7,4,14])
@@ -99,6 +122,8 @@ puts "Root.right_child.right_child: #{my_tree.root.right_child.right_child.value
 puts "Root.right_child.right_child.right_child: #{my_tree.root.right_child.right_child.right_child.value}"
 
 puts my_tree.breadth_first_search(4).value
+puts my_tree.depth_first_search(4).value
+puts my_tree.dfs_rec(4).value
 
 
 
