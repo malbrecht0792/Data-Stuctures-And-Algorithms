@@ -25,6 +25,7 @@ class Tree
 				@root = Node.new(value)
 				@current_node = @root
 			else
+				@current_node = @root
 				find_location_and_create_node(value)		
 			end
 		end
@@ -71,12 +72,17 @@ class Tree
 	end
 end
 
-my_tree = Tree.new([1,3,5,10,13,17,24,36])
+my_tree = Tree.new([8,3,10,13,1,7,4,14])
 
 puts "Root: #{my_tree.root.value}"
+puts "Root.left_child: #{my_tree.root.left_child.value}"
+puts "Root.left_child.left_child: #{my_tree.root.left_child.left_child.value}"
+puts "Root.left_child.right_child: #{my_tree.root.left_child.right_child.value}"
+puts "Root.left_child.right_child.left_child: #{my_tree.root.left_child.right_child.left_child.value}"
 puts "Root.right_child: #{my_tree.root.right_child.value}"
 puts "Root.right_child.right_child: #{my_tree.root.right_child.right_child.value}"
-puts "Root.right_child.right_child.parent: #{my_tree.root.right_child.right_child.parent.value}"
+puts "Root.right_child.right_child.right_child: #{my_tree.root.right_child.right_child.right_child.value}"
+
 
 
 
