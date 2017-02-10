@@ -7,7 +7,35 @@ class Knight
 	def move(move_from_space, move_to_space)
 		create_possible_moves_array(move_from_space)
 		create_possible_moves_tree(@possible_moves_array)
-		check_if_tree_contains_move_to_space(move_to_space)
+		@queue = []
+		@queue.push(@my_tree.root)
+		@current_node = @queue[0]
+
+		loop do
+			move_to_node = check_if_tree_contains_move_to_space(@current_node, move_to_space)
+			if move_to_node.nil?
+				@current_node.children.each{|child| @queue.push(child)}
+				@queue.shift
+				@current_node = @queue[0]
+				create_possible_moves_array(@current_node.value)
+				append_children_to_node(@current_node, @possible_moves_array)
+			else
+				path = []
+				current_node = move_to_node
+				path.unshift(current_node.value)
+				loop do
+					if current_node.parent.nil?
+						break
+					else
+						current_node = current_node.parent
+						path.unshift(current_node.value)
+					end
+				end
+				p path
+				return 
+			end
+		end
+
 	end
 
 	def create_possible_moves_array(root_move_array)
@@ -27,14 +55,28 @@ class Knight
 		@my_tree = Tree.new(input_array)
 	end
 
-	def check_if_tree_contains_move_to_space(move_to_space)
+	def check_if_tree_contains_move_to_space(root_node, move_to_space)
 		return_node = nil
-		@my_tree.root.children.each do |child|
+		root_node.children.each do |child|
 			if child.value == move_to_space
 				return_node = child
 			end
 		end
-		p return_node.value
+		return_node
+	end
+
+	def append_children_to_node(root_node, input_array)
+		input_array.each_with_index do |value, index|
+			if index == 0
+				#Do nothing
+			else
+				root_node.children.push(Node.new(value, root_node))
+			end
+		end
+	end
+
+	def create_path
+
 	end
 
 end
@@ -90,4 +132,4 @@ class Board
 end
 
 my_knight = Knight.new
-my_knight.move([1,1],[2,3])
+my_knight.move([1,1],[7,7])
