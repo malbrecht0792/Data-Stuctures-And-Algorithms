@@ -1,8 +1,14 @@
+<h1>Data Structures and Algorithms</h1>
+
 The objective of this project is to create a binary tree data structure and a function to locate data inside of it
 
-Tasks from theodinproject:
+- The full project details can be found here:
 
-PART 1
+https://www.theodinproject.com/courses/ruby-programming/lessons/data-structures-and-algorithms
+
+**Tasks from theodinproject:**
+
+<h2>PART 1</h2>
 
 1. Build a class Node. It should have a value that it stores and also links to its parent and children (if they exist). Build getters and setters for it (e.g. parent node, child node(s)).
 
@@ -23,7 +29,7 @@ Tips:
 You can think of the dfs_rec method as a little robot that crawls down the tree, checking if a node is the correct node and spawning other little robots to keep searching the tree. No robot is allowed to turn on, though, until all the robots to its left have finished their task.
 The method will need to take in both the target value and the current node to compare against.
 
-PART 2
+<h2>PART 2</h2>
 
 Your task is to build a function knight_moves that shows the simplest possible way to get from one square to another by outputting all squares the knight will stop on along the way.
 
